@@ -1,3 +1,13 @@
+# react_gridmaker
+
+React based web application in which users can create pixel art via a Grid.
+
+# Collaborators 
+[Adeebur Rahman](https://github.com/adeeburrahman) <br>
+[Emily Fang](https://github.com/ef1301/) <br>
+[Jessica Wong](https://github.com/wongjessica) <br>
+[Khinshan Khan](https://github.com/kkhan01)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
