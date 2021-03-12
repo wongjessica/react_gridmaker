@@ -6,16 +6,11 @@ const App = () => {
   const [rows, setRow] = useState(1);
   const [cols, setCol] = useState(1);
 
-  const addRow = () => {
-    setRow(rows => rows + 1);
-  };
+  const addRow = () => setRow(rows => rows + 1);
+  const addCol = () => setCol(cols => cols + 1);
 
-  const addCol = () => {
-    setCol(cols => cols + 1);
-  };
-
-  const removeRow = () => {};
-  const removeCol = () => {};
+  const removeRow = () => setRow(rows => rows - 1);
+  const removeCol = () => setCol(cols => cols - 1);
 
   const colorSelect = () => {};
 
