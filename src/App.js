@@ -43,7 +43,7 @@ const App = () => {
     }
   };
 
-  const colorSelect = () => {};
+  const colorSelect = e => setColor(e.target.value);
 
   const uncoloredFill = () => {};
   const fill = () => {};
