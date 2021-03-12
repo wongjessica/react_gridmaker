@@ -14,8 +14,6 @@ const App = () => {
     setCol(cols => cols + 1);
   };
 
-  console.log(rows,cols);
-
   const removeRow = () => {};
   const removeCol = () => {};
 
@@ -54,7 +52,8 @@ const App = () => {
       <button onClick={fill}>FILL ALL</button>
       <button onClick={clearAll}>CLEAR ALL</button>
       <br />
-      <Table />
+
+      <Table numRows={rows} numCols={cols} handleApplyColor={fill} />
     </>
   );
 };
