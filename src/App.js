@@ -53,7 +53,6 @@ const App = () => {
   return (
     <>
       <h1>Grid Maker Reactified</h1>
-      {rows} {cols}
       <form>
         <select id="color_choose" onChange={colorSelect}>
           <option value="red">Red</option>
