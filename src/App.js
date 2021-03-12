@@ -6,11 +6,41 @@ const App = () => {
   const [rows, setRow] = useState(1);
   const [cols, setCol] = useState(1);
 
-  const addRow = () => setRow(rows => rows + 1);
-  const addCol = () => setCol(cols => cols + 1);
+  const addRow = () => {
+    if (rows === 0) {
+      setRow(1);
+      setCol(1);
+    } else {
+      setRow(rows => rows + 1);
+    }
+  };
+  const addCol = () => {
+    if (cols === 0) {
+      setRow(1);
+      setCol(1);
+    } else {
+      setCol(cols => cols + 1);
+    }
+  };
 
-  const removeRow = () => setRow(rows => rows - 1);
-  const removeCol = () => setCol(cols => cols - 1);
+  const removeRow = () => {
+    if (rows === 0) return;
+    if (rows === 1) {
+      setRow(0);
+      setCol(0);
+    } else {
+      setRow(rows => rows - 1);
+    }
+  };
+  const removeCol = () => {
+    if (cols === 0) return;
+    if (cols === 1) {
+      setCol(0);
+      setRow(0);
+    } else {
+      setCol(cols => cols - 1);
+    }
+  };
 
   const colorSelect = () => {};
 
@@ -21,6 +51,7 @@ const App = () => {
   return (
     <>
       <h1>Grid Maker Reactified</h1>
+      {rows} {cols}
       <form>
         <select id="color_choose" onChange={colorSelect}>
           <option value="white">White</option>
@@ -39,15 +70,12 @@ const App = () => {
       </form>
       <button onClick={addRow}>ADD ROW</button>
       <button onClick={addCol}>ADD COL</button>
-
       <button onClick={removeRow}>REMOVE ROW</button>
       <button onClick={removeCol}>REMOVE COL</button>
-
       <button onClick={uncoloredFill}>FILL UNCOLORED</button>
       <button onClick={fill}>FILL ALL</button>
       <button onClick={clearAll}>CLEAR ALL</button>
       <br />
-
       <Table numRows={rows} numCols={cols} handleApplyColor={fill} />
     </>
   );
