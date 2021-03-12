@@ -3,11 +3,18 @@ import "./App.css";
 import Table from "./components/Table";
 
 const App = () => {
-  const [rows, setRow] = useState(0);
-  const [cols, setCol] = useState(0);
+  const [rows, setRow] = useState(1);
+  const [cols, setCol] = useState(1);
 
-  const addRow = () => {};
-  const addCol = () => {};
+  const addRow = () => {
+    setRow(rows => rows + 1);
+  };
+
+  const addCol = () => {
+    setCol(cols => cols + 1);
+  };
+
+  console.log(rows,cols);
 
   const removeRow = () => {};
   const removeCol = () => {};
@@ -22,7 +29,7 @@ const App = () => {
     <>
       <h1>Grid Maker Reactified</h1>
       <form>
-        <select id="color_choose" onChange="colorSelect">
+        <select id="color_choose" onChange={colorSelect}>
           <option value="white">White</option>
           <option value="red">Red</option>
           <option value="orange">Orange</option>
@@ -43,9 +50,9 @@ const App = () => {
       <button onClick={removeRow}>REMOVE ROW</button>
       <button onClick={removeCol}>REMOVE COL</button>
 
-      <button onClick="uncoloredFill">FILL UNCOLORED</button>
-      <button onClick="fill">FILL ALL</button>
-      <button onClick="clearAll">CLEAR ALL</button>
+      <button onClick={uncoloredFill}>FILL UNCOLORED</button>
+      <button onClick={fill}>FILL ALL</button>
+      <button onClick={clearAll}>CLEAR ALL</button>
       <br />
       <Table />
     </>
