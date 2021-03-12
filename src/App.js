@@ -5,6 +5,7 @@ import Table from "./components/Table";
 const App = () => {
   const [rows, setRow] = useState(1);
   const [cols, setCol] = useState(1);
+  const [color, setColor] = useState("red");
 
   const addRow = () => {
     if (rows === 0) {
@@ -54,13 +55,13 @@ const App = () => {
       {rows} {cols}
       <form>
         <select id="color_choose" onChange={colorSelect}>
-          <option value="white">White</option>
           <option value="red">Red</option>
           <option value="orange">Orange</option>
           <option value="yellow">Yellow</option>
           <option value="green">Green</option>
           <option value="blue">Blue</option>
           <option value="purple">Purple</option>
+          <option value="white">White</option>
           <option value="#cdcdcd">Gray</option>
           <option value="#F781F3">Pink</option>
           <option value="#2EFEF7">Toothpaste</option>
