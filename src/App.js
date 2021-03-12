@@ -44,6 +44,7 @@ const App = () => {
   };
 
   const colorSelect = e => setColor(e.target.value);
+  const handleApplyColor = e => (e.target.style.backgroundColor = color);
 
   const uncoloredFill = () => {};
   const fill = () => {};
@@ -77,7 +78,7 @@ const App = () => {
       <button onClick={fill}>FILL ALL</button>
       <button onClick={clearAll}>CLEAR ALL</button>
       <br />
-      <Table numRows={rows} numCols={cols} handleApplyColor={fill} />
+      <Table numRows={rows} numCols={cols} handleApplyColor={handleApplyColor} />
     </>
   );
 };
