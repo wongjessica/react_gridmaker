@@ -63,7 +63,8 @@ const App = () => {
       prevGrid.map((row, ri) =>
         row.map((cellColor, ci) => (color))
       )
-    );};
+    );
+  };
   const clearAll = () => {
     setGrid(prevGrid =>
       prevGrid.map((row, ri) =>
