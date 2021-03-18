@@ -57,8 +57,25 @@ const App = () => {
     );
   };
 
-  const uncoloredFill = () => {};
-  const fill = () => {};
+  const uncoloredFill = () => {
+    setGrid(prevGrid =>
+      prevGrid.map((row, ri) =>
+        row.map((cellColor, ci) => {
+          if (cellColor === "white") {
+            return color;
+          }
+          return cellColor;
+        })
+      )
+    );
+  };
+  const fill = () => {
+      setGrid(prevGrid =>
+      prevGrid.map((row, ri) =>
+        row.map((cellColor, ci) => (color))
+      )
+    );
+  };
   const clearAll = () => {
     setGrid(prevGrid =>
       prevGrid.map((row, ri) =>
