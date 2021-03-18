@@ -59,13 +59,24 @@ const App = () => {
 
   const uncoloredFill = () => {};
   const fill = () => {
-    setGrid(prevGrid =>
+      setGrid(prevGrid =>
       prevGrid.map((row, ri) =>
         row.map((cellColor, ci) => (color))
       )
     );
   };
-  const clearAll = () => {};
+  const clearAll = () => {
+    setGrid(prevGrid =>
+      prevGrid.map((row, ri) =>
+        row.map((cellColor, ci) => {
+          if (cellColor !== "white") {
+            return "white";
+          }
+          return cellColor;
+        })
+      )
+    );
+  };
 
   return (
     <>
