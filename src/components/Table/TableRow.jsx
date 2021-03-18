@@ -1,10 +1,16 @@
 import TableCell from "./TableCell";
 
-function TableRow({ numCols, handleApplyColor }) {
+function TableRow({ row, ri, handleApplyColor }) {
   return (
     <tr>
-      {[...Array(numCols)].map((val, index) => (
-        <TableCell key={index} handleApplyColor={handleApplyColor} />
+      {row.map((color, ci) => (
+        <TableCell
+          key={ci}
+          ri={ri}
+          ci={ci}
+          color={color}
+          handleApplyColor={handleApplyColor}
+        />
       ))}
     </tr>
   );

@@ -1,16 +1,19 @@
 import React from "react";
 import TableRow from "./TableRow";
 
-const Table = ({ numRows, numCols, handleApplyColor }) => {
+const Table = ({ grid, handleApplyColor }) => {
   return (
     <table id="grid">
-      {[...Array(numRows)].map((val, index) => (
-        <TableRow
-          key={index}
-          numCols={numCols}
-          handleApplyColor={handleApplyColor}
-        />
-      ))}
+      <tbody>
+        {grid.map((row, ri) => (
+          <TableRow
+            key={ri}
+            row={row}
+            ri={ri}
+            handleApplyColor={handleApplyColor}
+          />
+        ))}
+      </tbody>
     </table>
   );
 };

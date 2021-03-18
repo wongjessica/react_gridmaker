@@ -3,48 +3,59 @@ import "./App.css";
 import Table from "./components/Table";
 
 const App = () => {
-  const [rows, setRow] = useState(1);
-  const [cols, setCol] = useState(1);
   const [color, setColor] = useState("red");
+  const [grid, setGrid] = useState([["white"]]);
 
   const addRow = () => {
-    if (rows === 0) {
-      setRow(1);
-      setCol(1);
-    } else {
-      setRow(rows => rows + 1);
-    }
+    setGrid(prevGrid => {
+      if (prevGrid.length === 0) return [["white"]];
+      const newGrid = prevGrid.map(row => [...row]);
+      const newRow = prevGrid[0].map(row => "white");
+      newGrid.push(newRow);
+      return newGrid;
+    });
   };
   const addCol = () => {
-    if (cols === 0) {
-      setRow(1);
-      setCol(1);
-    } else {
-      setCol(cols => cols + 1);
-    }
+    setGrid(prevGrid => {
+      if (prevGrid.length === 0) return [["white"]];
+      const newGrid = prevGrid.map(row => [...row, "white"]);
+      return newGrid;
+    });
   };
 
   const removeRow = () => {
-    if (rows === 0) return;
-    if (rows === 1) {
-      setRow(0);
-      setCol(0);
-    } else {
-      setRow(rows => rows - 1);
-    }
+    setGrid(prevGrid => {
+      if (prevGrid.length <= 1) return [];
+      const newGrid = prevGrid.map(row => [...row]);
+      newGrid.pop();
+      return newGrid;
+    });
   };
   const removeCol = () => {
-    if (cols === 0) return;
-    if (cols === 1) {
-      setCol(0);
-      setRow(0);
-    } else {
-      setCol(cols => cols - 1);
-    }
+    setGrid(prevGrid => {
+      if (prevGrid.length <= 1 || prevGrid[0].length <= 1) return [];
+      const newGrid = prevGrid.map(row => {
+        const newRow = [...row];
+        newRow.pop();
+        return newRow;
+      });
+      return newGrid;
+    });
   };
 
   const colorSelect = e => setColor(e.target.value);
-  const handleApplyColor = e => (e.target.style.backgroundColor = color);
+  const handleApplyColor = (r, c) => {
+    setGrid(prevGrid =>
+      prevGrid.map((row, ri) =>
+        row.map((cellColor, ci) => {
+          if (r === ri && c === ci) {
+            return color;
+          }
+          return cellColor;
+        })
+      )
+    );
+  };
 
   const uncoloredFill = () => {};
   const fill = () => {};
@@ -77,7 +88,7 @@ const App = () => {
       <button onClick={fill}>FILL ALL</button>
       <button onClick={clearAll}>CLEAR ALL</button>
       <br />
-      <Table numRows={rows} numCols={cols} handleApplyColor={handleApplyColor} />
+      <Table grid={grid} handleApplyColor={handleApplyColor}></Table>
     </>
   );
 };
